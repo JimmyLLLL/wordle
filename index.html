@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="preconnect" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="preconnect" href="https://api.counterapi.dev">
+    <link rel="dns-prefetch" href="https://api.counterapi.dev">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0a0b0f">
+    <meta name="description" content="Play Wordle free — guess the 5-letter word in 6 tries. Daily puzzle + unlimited practice. Color hints show correct, present, and absent letters. No download, no signup.">
+    <meta name="keywords" content="wordle, word game, word puzzle, guess the word, 5 letter word game, daily wordle, wordle online, wordle free, play wordle">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://jimmywithfiona.com/wordle/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1840337371416691" crossorigin="anonymous"></script>
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Wordle">
+    <meta property="og:title" content="Wordle — Free Daily 5-Letter Word Guessing Game">
+    <meta property="og:description" content="Guess the 5-letter word in 6 tries. Daily puzzle + unlimited practice. Play free, no download.">
+    <meta property="og:url" content="https://jimmywithfiona.com/wordle/">
+    <meta property="og:image" content="https://jimmywithfiona.com/wordle/favicon.svg">
+    <meta property="og:locale" content="en_US">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Wordle — Free 5-Letter Word Game">
+    <meta name="twitter:description" content="Guess the word in 6 tries. Daily puzzle + unlimited practice.">
+    <meta name="twitter:image" content="https://jimmywithfiona.com/wordle/favicon.svg">
+    <title>Wordle — Free Daily 5-Letter Word Guessing Game | Play Online</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"WebApplication","name":"Wordle","url":"https://jimmywithfiona.com/wordle/","description":"Free online Wordle game. Guess the 5-letter word in 6 tries. Daily puzzle and unlimited practice mode.","applicationCategory":"GameApplication","operatingSystem":"Any (Web Browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":"What is Wordle?","acceptedAnswer":{"@type":"Answer","text":"Wordle is a daily word puzzle where you guess a hidden 5-letter word in 6 tries. After each guess, tiles change color to show how close your guess was."}},
+        {"@type":"Question","name":"What do the colors mean?","acceptedAnswer":{"@type":"Answer","text":"Green means the letter is in the correct spot. Yellow means the letter is in the word but in the wrong spot. Gray means the letter is not in the word."}},
+        {"@type":"Question","name":"Is this Wordle free?","acceptedAnswer":{"@type":"Answer","text":"Yes, completely free. No signup, no download. Play the daily puzzle once per day, or practice unlimited in free mode."}},
+        {"@type":"Question","name":"When does the daily puzzle reset?","acceptedAnswer":{"@type":"Answer","text":"The daily puzzle resets at midnight UTC. Come back every day for a new word!"}}
+    ]}
+    </script>
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jimmywithfiona.com/"},{"@type":"ListItem","position":2,"name":"Wordle","item":"https://jimmywithfiona.com/wordle/"}]}
+    </script>
+</head>
+<body>
+<nav class="navbar">
+    <a class="brand" href="/wordle/">🟩 Wordle</a>
+    <div class="nav-links">
+        <a href="/wordle/" class="active">Play</a>
+        <a href="about.html">About</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="contact.html">Contact</a>
+        <a href="/">🏠 Home</a>
+    </div>
+</nav>
+<main>
+    <h1>Wordle</h1>
+    <p class="subtitle">Guess the 5-letter word in 6 tries.</p>
+    <div class="game-info" id="gameInfo">Daily Puzzle · <span class="puzzle-num" id="puzzleNum">#—</span></div>
+
+    <div class="btn-row">
+        <button class="btn" id="modeBtn" onclick="toggleMode()">🎮 Free Practice</button>
+        <button class="btn btn-secondary" onclick="showHelp()">❓ How to Play</button>
+    </div>
+
+    <div class="msg"><div class="toast" id="toast"></div></div>
+
+    <div class="board" id="board"></div>
+
+    <div class="keyboard" id="keyboard"></div>
+
+    <div class="stats-footer">👁️ Views <strong id="pv">-</strong><span class="stat-divider">|</span>👤 Visitors <strong id="uv">-</strong></div>
+
+    <div class="seo-section">
+        <h2>What Is Wordle?</h2>
+        <p>Wordle is a daily word puzzle game where you have six attempts to guess a hidden five-letter word. After each guess, the tiles change color to give you feedback: green means the letter is in the correct position, yellow means the letter is in the word but in the wrong position, and gray means the letter is not in the word at all. The goal is to figure out the secret word using logic and deduction before you run out of tries.</p>
+        <h2>How to Play</h2>
+        <ul>
+            <li><strong>Type a 5-letter word</strong> — Use your keyboard or the on-screen keys.</li>
+            <li><strong>Press Enter</strong> — Submit your guess to see the color feedback.</li>
+            <li><strong>Green tile</strong> — The letter is correct and in the right spot.</li>
+            <li><strong>Yellow tile</strong> — The letter is in the word but in the wrong spot.</li>
+            <li><strong>Gray tile</strong> — The letter is not in the word.</li>
+            <li><strong>Win</strong> — Guess the word in 6 tries or fewer!</li>
+        </ul>
+        <h2>Daily Puzzle vs. Free Practice</h2>
+        <p>In <strong>Daily Puzzle</strong> mode, there's one word per day — everyone gets the same word. It resets at midnight UTC, so come back tomorrow for a new challenge. In <strong>Free Practice</strong> mode, you can play unlimited random words anytime. Perfect for honing your skills between daily puzzles.</p>
+        <h2>Tips to Win at Wordle</h2>
+        <ul>
+            <li><strong>Start with vowel-heavy words</strong> — Try words like ADIEU, AUDIO, or RAISE to identify vowels early.</li>
+            <li><strong>Avoid repeating letters</strong> in early guesses — maximize information from each guess.</li>
+            <li><strong>Use process of elimination</strong> — gray letters are out, so don't reuse them.</li>
+            <li><strong>Pay attention to position</strong> — yellow letters need to move to a different spot.</li>
+            <li><strong>Think about common letter patterns</strong> — English words often use -TION, -IGHT, -ATION.</li>
+            <li><strong>Don't waste guesses</strong> — even a wrong guess teaches you something.</li>
+        </ul>
+        <h2>Share Your Results</h2>
+        <p>After finishing a puzzle, you can share your results using emoji blocks — no spoilers! The colored squares show your guess pattern without revealing the word. Share on social media to challenge your friends and compare strategies.</p>
+        <h2>Why Is Wordle So Popular?</h2>
+        <p>Wordle became a global phenomenon because it's simple, satisfying, and social. One puzzle per day creates anticipation and routine. The shareable emoji results sparked viral spread on social media. It's short enough to play in a minute, yet challenging enough to keep you thinking. Best of all, it's free and requires no download or signup.</p>
+        <h2>FAQ</h2>
+        <p><strong>Can I play more than once a day?</strong> — Yes! Switch to Free Practice mode for unlimited random puzzles. The daily puzzle is once per day.</p>
+        <p><strong>Is Wordle suitable for kids?</strong> — Yes, it's a great vocabulary and logic exercise for all ages.</p>
+        <p><strong>Does it work on mobile?</strong> — Yes, fully responsive with an on-screen keyboard for touch devices.</p>
+    </div>
+</main>
+<footer>
+    <p><a href="about.html">About</a> · <a href="privacy.html">Privacy</a> · <a href="contact.html">Contact</a> · <a href="/">Home</a></p>
+    <p style="margin-top:0.4rem;">Wordle © 2026 · Free daily word game</p>
+    <div style="margin-top:0.6rem;font-size:0.72rem;opacity:0.6;">More: <a href="/word-counter/">Word Counter</a> · <a href="/typing-test/">Typing Test</a> · <a href="/age-calculator/">Age Calculator</a> · <a href="/game-2048/">2048</a> · <a href="/fun-tests/">FunTests</a></div>
+</footer>
+
+<!-- Result Modal -->
+<div class="modal-overlay" id="modal">
+    <div class="modal">
+        <h2 id="modalTitle">Solved!</h2>
+        <div class="word-reveal" id="wordReveal">—</div>
+        <div class="stats">
+            <div class="stat"><div class="stat-num" id="statPlayed">0</div><div class="stat-label">Played</div></div>
+            <div class="stat"><div class="stat-num" id="statWin">0</div><div class="stat-label">Win %</div></div>
+            <div class="stat"><div class="stat-num" id="statStreak">0</div><div class="stat-label">Streak</div></div>
+            <div class="stat"><div class="stat-num" id="statBest">0</div><div class="stat-label">Best</div></div>
+        </div>
+        <button class="share-btn" id="shareBtn" onclick="shareResult()">📋 Share Result</button>
+        <button class="close-btn" onclick="closeModal()" id="closeBtn">Close</button>
+        <div class="next-time" id="nextTime"></div>
+    </div>
+</div>
+<textarea id="shareText"></textarea>
+
+<script src="js/counter.js" defer></script>
+<script src="js/words.js" defer></script>
+<script defer>
+const ANSWERS = typeof ANSWER_WORDS !== "undefined" ? ANSWER_WORDS : WORDS;
+const VALID = typeof VALID_WORDS !== "undefined" ? VALID_WORDS : WORDS;
+const WORDLEN = 5;
+const MAXROWS = 6;
+
+let mode = "daily";
+let answer = "";
+let row = 0;
+let col = 0;
+let guesses = [];
+let keyStates = {};
+let gameOver = false;
+let isAnimating = false;
+
+const board = document.getElementById("board");
+const keyboard = document.getElementById("keyboard");
+const toast = document.getElementById("toast");
+
+// ===== Daily puzzle =====
+const EPOCH = new Date(2026, 0, 1).getTime();
+function getDayNum() {
+    return Math.floor((Date.now() - EPOCH) / 86400000);
+}
+function getNextReset() {
+    const now = new Date();
+    const tomorrow = new Date(now);
+    tomorrow.setUTCDate(now.getUTCDate() + 1);
+    tomorrow.setUTCHours(0, 0, 0, 0);
+    return tomorrow;
+}
+
+// ===== Init board =====
+function initBoard() {
+    board.innerHTML = "";
+    for (let r = 0; r < MAXROWS; r++) {
+        const rowEl = document.createElement("div");
+        rowEl.className = "row";
+        rowEl.id = "row" + r;
+        for (let c = 0; c < WORDLEN; c++) {
+            const tile = document.createElement("div");
+            tile.className = "tile";
+            tile.id = "tile" + r + "_" + c;
+            rowEl.appendChild(tile);
+        }
+        board.appendChild(rowEl);
+    }
+}
+
+function initKeyboard() {
+    keyboard.innerHTML = "";
+    const layout = [
+        ["q","w","e","r","t","y","u","i","o","p"],
+        ["a","s","d","f","g","h","j","k","l"],
+        ["ENTER","z","x","c","v","b","n","m","BACK"]
+    ];
+    layout.forEach(rowKeys => {
+        const rowEl = document.createElement("div");
+        rowEl.className = "kb-row";
+        rowKeys.forEach(k => {
+            const key = document.createElement("button");
+            key.className = "key";
+            if (k === "ENTER") { key.classList.add("wide"); key.textContent = "ENTER"; }
+            else if (k === "BACK") { key.classList.add("wide"); key.textContent = "⌫"; }
+            else { key.textContent = k; }
+            key.dataset.key = k;
+            key.addEventListener("click", () => handleKey(k));
+            rowEl.appendChild(key);
+        });
+        keyboard.appendChild(rowEl);
+    });
+}
+
+// ===== Game logic =====
+function newGame() {
+    if (mode === "daily") {
+        const dayNum = getDayNum();
+        answer = ANSWERS[dayNum % ANSWERS.length];
+        document.getElementById("puzzleNum").textContent = "#" + (dayNum + 1);
+        document.getElementById("gameInfo").innerHTML = 'Daily Puzzle · <span class="puzzle-num">#' + (dayNum + 1) + '</span>';
+        // load saved daily progress
+        const saved = JSON.parse(localStorage.getItem("wordle_daily_" + dayNum) || "null");
+        if (saved && saved.guesses) {
+            row = 0; col = 0; guesses = []; keyStates = {};
+            saved.guesses.forEach(g => {
+                for (let i = 0; i < g.word.length; i++) { inputLetter(g.word[i]); }
+                submitGuess(false);
+            });
+            if (saved.over) gameOver = true;
+            return;
+        }
+    } else {
+        answer = ANSWERS[Math.floor(Math.random() * ANSWERS.length)];
+        document.getElementById("gameInfo").innerHTML = 'Free Practice · <span class="puzzle-num">Random</span>';
+    }
+    row = 0; col = 0; guesses = []; keyStates = {}; gameOver = false;
+}
+
+function inputLetter(letter) {
+    if (col >= WORDLEN || gameOver) return;
+    const tile = document.getElementById("tile" + row + "_" + col);
+    tile.textContent = letter;
+    tile.classList.add("filled");
+    col++;
+}
+
+function deleteLetter() {
+    if (col <= 0 || gameOver) return;
+    col--;
+    const tile = document.getElementById("tile" + row + "_" + col);
+    tile.textContent = "";
+    tile.classList.remove("filled");
+}
+
+function submitGuess(save) {
+    if (col < WORDLEN) { shakeRow(); showToast("Not enough letters"); return; }
+    let guess = "";
+    for (let c = 0; c < WORDLEN; c++) {
+        guess += document.getElementById("tile" + row + "_" + c).textContent.toLowerCase();
+    }
+    if (!VALID.includes(guess) && !ANSWERS.includes(guess)) {
+        shakeRow();
+        showToast("Not in word list");
+        return;
+    }
+
+    const result = evaluateGuess(guess, answer);
+    const tiles = [];
+    for (let c = 0; c < WORDLEN; c++) {
+        const tile = document.getElementById("tile" + row + "_" + c);
+        tiles.push(tile);
+    }
+    isAnimating = true;
+    tiles.forEach((tile, c) => {
+        setTimeout(() => {
+            tile.classList.add("flip");
+            setTimeout(() => {
+                tile.classList.add(result[c]);
+                updateKey(guess[c], result[c]);
+            }, 250);
+        }, c * 250);
+    });
+
+    setTimeout(() => {
+        isAnimating = false;
+        guesses.push({ word: guess, result: result });
+        if (guess === answer) {
+            gameOver = true;
+            document.getElementById("row" + row).classList.add("bounce");
+            setTimeout(() => endGame(true), 700);
+        } else if (row >= MAXROWS - 1) {
+            gameOver = true;
+            setTimeout(() => endGame(false), 300);
+        } else {
+            row++; col = 0;
+        }
+        if (mode === "daily" && save !== false) {
+            localStorage.setItem("wordle_daily_" + getDayNum(), JSON.stringify({
+                guesses: guesses, over: gameOver
+            }));
+        }
+    }, WORDLEN * 250 + 300);
+}
+
+function evaluateGuess(guess, target) {
+    const result = new Array(WORDLEN).fill("absent");
+    const targetArr = target.split("");
+    const guessArr = guess.split("");
+    // First pass: correct
+    for (let i = 0; i < WORDLEN; i++) {
+        if (guessArr[i] === targetArr[i]) {
+            result[i] = "correct";
+            targetArr[i] = null;
+        }
+    }
+    // Second pass: present
+    for (let i = 0; i < WORDLEN; i++) {
+        if (result[i] === "correct") continue;
+        const idx = targetArr.indexOf(guessArr[i]);
+        if (idx !== -1) {
+            result[i] = "present";
+            targetArr[idx] = null;
+        }
+    }
+    return result;
+}
+
+function updateKey(letter, state) {
+    const priority = { correct: 3, present: 2, absent: 1 };
+    if (keyStates[letter] && priority[keyStates[letter]] >= priority[state]) return;
+    keyStates[letter] = state;
+    const keyEl = document.querySelector('[data-key="' + letter + '"]');
+    if (keyEl) {
+        keyEl.classList.remove("correct", "present", "absent");
+        keyEl.classList.add(state);
+    }
+}
+
+function shakeRow() {
+    const rowEl = document.getElementById("row" + row);
+    if (!rowEl) return;
+    [...rowEl.children].forEach(t => {
+        t.classList.add("shake");
+        setTimeout(() => t.classList.remove("shake"), 400);
+    });
+}
+
+function handleKey(k) {
+    if (gameOver || isAnimating) return;
+    if (k === "ENTER") submitGuess(true);
+    else if (k === "BACK") deleteLetter();
+    else if (k.length === 1 && k.match(/[a-z]/i)) inputLetter(k.toUpperCase());
+}
+
+// ===== Toast =====
+let toastTimer = null;
+function showToast(msg, duration) {
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => toast.classList.remove("show"), duration || 1500);
+}
+
+// ===== End game / stats =====
+function endGame(won) {
+    const stats = getStats();
+    stats.played++;
+    if (won) {
+        stats.wins++;
+        stats.streak++;
+        if (stats.streak > stats.best) stats.best = stats.streak;
+    } else {
+        stats.streak = 0;
+    }
+    saveStats(stats);
+
+    document.getElementById("modalTitle").textContent = won ? "🎉 Solved!" : "😢 Better luck next time!";
+    document.getElementById("wordReveal").textContent = answer.toUpperCase();
+    document.getElementById("statPlayed").textContent = stats.played;
+    document.getElementById("statWin").textContent = stats.played ? Math.round(stats.wins / stats.played * 100) : 0;
+    document.getElementById("statStreak").textContent = stats.streak;
+    document.getElementById("statBest").textContent = stats.best;
+
+    if (mode === "daily") {
+        const next = getNextReset();
+        const h = String(next.getUTCHours()).padStart(2, "0");
+        const m = String(next.getUTCMinutes()).padStart(2, "0");
+        document.getElementById("nextTime").textContent = "Next puzzle in " + h + ":" + m + " UTC";
+        document.getElementById("closeBtn").textContent = "Close";
+    } else {
+        document.getElementById("nextTime").textContent = "";
+        document.getElementById("closeBtn").textContent = "Play Again";
+    }
+    document.getElementById("modal").classList.add("show");
+}
+
+function getStats() {
+    return JSON.parse(localStorage.getItem("wordle_stats") || '{"played":0,"wins":0,"streak":0,"best":0}');
+}
+function saveStats(s) {
+    localStorage.setItem("wordle_stats", JSON.stringify(s));
+}
+
+// ===== Share =====
+function shareResult() {
+    const dayNum = mode === "daily" ? getDayNum() + 1 : "Free";
+    const emojis = { correct: "🟩", present: "🟨", absent: "⬛" };
+    let text = "Wordle " + dayNum + " " + (gameOver && guesses[guesses.length-1].word === answer ? guesses.length : "X") + "/" + MAXROWS + "\n\n";
+    text += guesses.map(g => g.result.map(r => emojis[r]).join("")).join("\n");
+    const shareEl = document.getElementById("shareText");
+    shareEl.value = text;
+    shareEl.style.display = "block";
+    shareEl.select();
+    try {
+        if (navigator.share) {
+            navigator.share({ title: "Wordle", text: text }).catch(() => copyShare(text, shareEl));
+        } else {
+            copyShare(text, shareEl);
+        }
+    } catch (e) {
+        copyShare(text, shareEl);
+    }
+}
+function copyShare(text, el) {
+    navigator.clipboard.writeText(text).then(() => {
+        showToast("Copied! Share with friends 📋");
+        el.style.display = "none";
+    }).catch(() => {
+        el.style.display = "none";
+        showToast("Copy failed — screenshot instead");
+    });
+}
+
+// ===== Mode toggle =====
+function toggleMode() {
+    if (mode === "daily") {
+        mode = "free";
+        document.getElementById("modeBtn").textContent = "📅 Daily Puzzle";
+    } else {
+        mode = "daily";
+        document.getElementById("modeBtn").textContent = "🎮 Free Practice";
+    }
+    initBoard();
+    [...document.querySelectorAll(".key")].forEach(k => k.classList.remove("correct","present","absent"));
+    keyStates = {};
+    newGame();
+}
+
+function closeModal() {
+    document.getElementById("modal").classList.remove("show");
+    if (mode === "free") {
+        initBoard();
+        [...document.querySelectorAll(".key")].forEach(k => k.classList.remove("correct","present","absent"));
+        keyStates = {};
+        newGame();
+    }
+}
+
+function showHelp() {
+    showToast("Guess the 5-letter word in 6 tries. 🟩=right spot 🟨=wrong spot ⬛=not in word", 4000);
+}
+
+// ===== Keyboard events =====
+document.addEventListener("keydown", e => {
+    if (document.getElementById("modal").classList.contains("show")) return;
+    if (e.key === "Enter") handleKey("ENTER");
+    else if (e.key === "Backspace") handleKey("BACK");
+    else if (/^[a-zA-Z]$/.test(e.key)) handleKey(e.key.toUpperCase());
+});
+
+// ===== Init =====
+initBoard();
+initKeyboard();
+newGame();
+</script>
+</body>
+</html>

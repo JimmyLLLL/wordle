@@ -1,0 +1,96 @@
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0a0b0f;--bg2:#11131a;--card:#161922;--card2:#1a1e28;--border:#232733;--border2:#2d3340;--text:#e8eaf0;--dim:#7a8190;--accent:#4f8cff;--hover:#6ba1ff;--green:#3aa394;--yellow:#c9b458;--gray:#3a3a3c;--r:16px}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);min-height:100vh;line-height:1.7;overflow-x:hidden}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:.75rem 2rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:rgba(10,11,15,.92);backdrop-filter:blur(12px);z-index:50}
+.navbar .brand{font-weight:800;color:var(--text);text-decoration:none;font-size:1.05rem;display:flex;align-items:center;gap:.4rem}
+.navbar .nav-links{display:flex;gap:1rem}
+.navbar .nav-links a{color:var(--dim);text-decoration:none;font-size:.82rem;transition:color .2s;min-height:44px;display:inline-flex;align-items:center}
+.navbar .nav-links a:hover,.navbar .nav-links a.active{color:var(--hover)}
+main{max-width:640px;margin:0 auto;padding:2rem 1.5rem 3rem}
+h1{font-size:2.2rem;margin-bottom:.4rem;text-align:center;background:linear-gradient(135deg,#3aa394,#c9b458,#4f8cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.subtitle{color:var(--dim);font-size:.95rem;margin-bottom:.5rem;text-align:center}
+.game-info{text-align:center;margin-bottom:1rem;font-size:.85rem;color:var(--dim)}
+.game-info .puzzle-num{color:var(--accent);font-weight:700}
+h2{font-size:1.15rem;margin:1.5rem 0 .6rem;color:var(--hover)}
+p{margin-bottom:.75rem}a{color:var(--hover)}
+ul{margin:0 0 1rem 1.25rem}li{margin-bottom:.4rem}
+
+/* Game board */
+.board{display:grid;grid-template-rows:repeat(6,1fr);gap:6px;width:330px;max-width:100%;margin:0 auto 1rem;aspect-ratio:1/1.2}
+.row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.tile{display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;text-transform:uppercase;border:2px solid var(--border2);border-radius:6px;aspect-ratio:1;transition:transform .15s,border-color .15s,background .3s;user-select:none}
+.tile.filled{border-color:var(--dim);animation:pop .12s}
+.tile.flip{animation:flip .5s ease}
+.tile.correct{background:var(--green);border-color:var(--green);color:#fff}
+.tile.present{background:var(--yellow);border-color:var(--yellow);color:#fff}
+.tile.absent{background:var(--gray);border-color:var(--gray);color:#fff}
+.tile.shake{animation:shake .4s}
+.row.bounce .tile{animation:bounce .5s}
+.row.bounce .tile:nth-child(2){animation-delay:.1s}.row.bounce .tile:nth-child(3){animation-delay:.2s}.row.bounce .tile:nth-child(4){animation-delay:.3s}.row.bounce .tile:nth-child(5){animation-delay:.4s}
+
+/* Keyboard */
+.keyboard{display:flex;flex-direction:column;gap:6px;max-width:500px;margin:0 auto 1rem}
+.kb-row{display:flex;gap:6px;justify-content:center}
+.key{flex:1;background:var(--bg2);border:1px solid var(--border2);border-radius:6px;padding:.85rem 0;font-size:.85rem;font-weight:600;color:var(--text);cursor:pointer;transition:background .15s,transform .05s;font-family:inherit;text-transform:uppercase;min-width:32px}
+.key:hover{background:var(--card)}
+.key:active{transform:scale(.93)}
+.key.wide{flex:1.6;font-size:.7rem}
+.key.correct{background:var(--green);border-color:var(--green);color:#fff}
+.key.present{background:var(--yellow);border-color:var(--yellow);color:#fff}
+.key.absent{background:var(--gray);border-color:var(--gray);color:var(--dim)}
+
+/* Messages */
+.msg{min-height:2rem;display:flex;align-items:center;justify-content:center;margin-bottom:.5rem}
+.toast{background:var(--text);color:var(--bg);padding:.6rem 1.4rem;border-radius:8px;font-size:.85rem;font-weight:600;animation:toastIn .2s;display:none}
+.toast.show{display:block}
+
+/* Modal */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:100;padding:1rem}
+.modal-overlay.show{display:flex;animation:fade .2s}
+.modal{background:var(--card);border:1px solid var(--border2);border-radius:var(--r);padding:2rem;max-width:380px;width:100%;text-align:center}
+.modal h2{color:var(--text);font-size:1.5rem;margin-bottom:.5rem}
+.modal .word-reveal{font-size:1.4rem;font-weight:800;color:var(--green);letter-spacing:.15em;margin:.5rem 0 1rem;text-transform:uppercase}
+.modal .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:.5rem;margin:1rem 0}
+.modal .stat{text-align:center}
+.modal .stat-num{font-size:1.8rem;font-weight:800;color:var(--accent)}
+.modal .stat-label{font-size:.65rem;color:var(--dim);text-transform:uppercase}
+.modal .share-btn{background:linear-gradient(135deg,var(--green),#2d8a7e);color:#fff;border:none;border-radius:10px;padding:.75rem 1.5rem;font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;width:100%;margin-top:.5rem;transition:transform .1s}
+.modal .share-btn:hover{box-shadow:0 4px 14px rgba(58,163,148,.4)}
+.modal .share-btn:active{transform:scale(.97)}
+.modal .close-btn{background:var(--bg2);border:1px solid var(--border2);color:var(--dim);border-radius:10px;padding:.75rem 1.5rem;font-size:.9rem;font-weight:600;cursor:pointer;font-family:inherit;width:100%;margin-top:.5rem}
+.modal .close-btn:hover{background:var(--card);color:var(--text)}
+.modal .next-time{color:var(--dim);font-size:.8rem;margin-top:.5rem}
+#shareText{display:none}
+
+.btn-row{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-bottom:1rem}
+.btn{background:linear-gradient(135deg,var(--accent),#3a78f0);color:#fff;border:none;border-radius:10px;padding:.75rem 1.8rem;font-size:.9rem;font-weight:600;cursor:pointer;transition:transform .1s,box-shadow .15s;font-family:inherit;min-height:44px;box-shadow:0 4px 14px rgba(79,140,255,.3)}
+.btn:hover{box-shadow:0 6px 20px rgba(79,140,255,.45)}
+.btn:active{transform:scale(.97)}
+.btn-secondary{background:var(--bg2);border:1px solid var(--border2);box-shadow:none}
+.btn-secondary:hover{background:var(--card);box-shadow:none}
+
+.stats-footer{text-align:center;margin:1.5rem 0;font-size:.78rem;color:var(--dim)}
+.stats-footer strong{color:var(--hover);font-variant-numeric:tabular-nums}
+.stat-divider{margin:0 .6rem;opacity:.4}
+footer{text-align:center;padding:1.5rem 2rem;color:var(--dim);font-size:.75rem;border-top:1px solid var(--border)}
+footer a{color:var(--hover);text-decoration:none}
+.seo-section{color:var(--dim);font-size:.88rem;margin-top:2.5rem;line-height:1.8}
+.seo-section h2{color:var(--text)}
+
+@keyframes pop{0%{transform:scale(.85)}100%{transform:scale(1)}}
+@keyframes flip{0%{transform:rotateX(0)}50%{transform:rotateX(90deg)}100%{transform:rotateX(0)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}
+@keyframes bounce{0%{transform:translateY(0)}30%{transform:translateY(-12px)}60%{transform:translateY(0)}}
+@keyframes toastIn{0%{opacity:0;transform:translateY(-8px)}100%{opacity:1;transform:translateY(0)}}
+@keyframes fade{0%{opacity:0}100%{opacity:1}}
+
+@media(max-width:480px){
+  main{padding:1.5rem 1rem 3rem}
+  h1{font-size:1.6rem}
+  .board{width:300px;gap:4px}
+  .row{gap:4px}
+  .tile{font-size:1.6rem;border-radius:4px}
+  .key{font-size:.75rem;padding:.7rem 0;min-width:28px}
+  .navbar{padding:.75rem 1rem}
+  .navbar .nav-links{gap:.6rem}
+}

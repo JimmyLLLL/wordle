@@ -1,0 +1,3 @@
+(function(){const N="jimmyllll-wordle";const p=document.getElementById("pv"),u=document.getElementById("uv");
+if(p){fetch("https://api.counterapi.dev/v1/"+N+"/pv/up").then(r=>r.json()).then(d=>{p.textContent=(d.count||0).toLocaleString()}).catch(()=>{p.textContent="N/A"})}
+if(u){const k="wordle_uv_counted";if(!localStorage.getItem(k)){fetch("https://api.counterapi.dev/v1/"+N+"/uv/up").then(r=>r.json()).then(d=>{u.textContent=(d.count||0).toLocaleString();localStorage.setItem(k,"1")}).catch(()=>{u.textContent="N/A"})}else{fetch("https://api.counterapi.dev/v1/"+N+"/uv").then(r=>r.json()).then(d=>{u.textContent=(d.count||0).toLocaleString()}).catch(()=>{u.textContent="N/A"})}}})();
