@@ -41,8 +41,38 @@
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jimmywithfiona.com/"},{"@type":"ListItem","position":2,"name":"Wordle","item":"https://jimmywithfiona.com/wordle/"}]}
     </script>
+<!-- COOL-LAYER:CSS -->
+<style>
+:root{--cool-hover:var(--hover,var(--accent-hover,var(--accent)));--cool-bg2:var(--bg-2,var(--bg2,var(--bg)));--cool-border:var(--border-2,var(--border2,var(--border)))}
+body{position:relative}
+body::before{content:"";position:fixed;inset:-40%;z-index:-1;pointer-events:none;
+background:radial-gradient(40% 50% at 15% 20%,color-mix(in srgb,var(--accent) 14%,transparent),transparent 60%),
+radial-gradient(35% 45% at 85% 15%,color-mix(in srgb,var(--accent) 9%,transparent),transparent 60%),
+radial-gradient(45% 55% at 70% 85%,color-mix(in srgb,#e84393 7%,transparent),transparent 60%);
+animation:coolAurora 24s ease-in-out infinite alternate;filter:blur(6px)}
+@keyframes coolAurora{0%{transform:translate(0,0) rotate(0) scale(1)}50%{transform:translate(2%,-2%) rotate(5deg) scale(1.06)}100%{transform:translate(-2%,2%) rotate(-4deg) scale(1.03)}}
+.navbar{box-shadow:0 4px 30px rgba(0,0,0,.25)!important;background:color-mix(in srgb,var(--bg) 70%,transparent)!important;backdrop-filter:blur(18px) saturate(160%)!important}
+.navbar .brand{background:linear-gradient(110deg,var(--text),var(--cool-hover));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.cool-progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:100;transition:width .1s;
+background:linear-gradient(90deg,var(--accent),var(--cool-hover),#e84393);box-shadow:0 0 10px color-mix(in srgb,var(--accent) 60%,transparent)}
+.btn,.cta,button:not(.key):not(.kb):not(.cool-top){transition:transform .15s,box-shadow .2s!important}
+.btn:hover,.cta:hover,button:not(.key):not(.kb):not(.cool-top):hover{transform:translateY(-2px)!important;box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 35%,transparent)!important}
+.tool-card,.card-block{transition:border-color .2s,box-shadow .2s,transform .2s!important}
+.tool-card:hover,.card-block:hover{border-color:var(--accent)!important;box-shadow:0 10px 30px color-mix(in srgb,var(--accent) 14%,transparent)!important;transform:translateY(-3px)}
+input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 18%,transparent)!important}
+.cool-top{position:fixed;bottom:1.5rem;right:1.5rem;width:46px;height:46px;border-radius:50%;
+border:1px solid var(--cool-border);background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(10px);
+color:var(--text);font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;
+opacity:0;transform:translateY(12px);pointer-events:none;transition:all .3s;z-index:90}
+.cool-top.show{opacity:1;transform:translateY(0);pointer-events:auto}
+.cool-top:hover{border-color:var(--accent);color:var(--cool-hover);box-shadow:0 8px 24px color-mix(in srgb,var(--accent) 25%,transparent)}
+h1{animation:coolFadeUp .6s ease both}
+@keyframes coolFadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+</style>
+<!-- /COOL-LAYER:CSS -->
 </head>
 <body>
+<div class="cool-progress" id="coolProgress"></div>
 <nav class="navbar">
     <a class="brand" href="/wordle/">🟩 Wordle</a>
     <div class="nav-links">
@@ -476,5 +506,20 @@ initBoard();
 initKeyboard();
 newGame();
 </script>
+<!-- COOL-LAYER:JS -->
+<script>
+(function(){
+var p=document.getElementById('coolProgress'),b=null;
+if(!document.querySelector('.cool-top')){b=document.createElement('button');b.className='cool-top';b.innerHTML='↑';b.setAttribute('aria-label','Back to top');document.body.appendChild(b)}
+else{b=document.querySelector('.cool-top')}
+window.addEventListener('scroll',function(){
+var h=document.documentElement.scrollHeight-window.innerHeight;
+if(h>0)p.style.width=(window.scrollY/h*100)+'%';
+if(b)b.classList.toggle('show',window.scrollY>500);
+},{passive:true});
+if(b)b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
+})();
+</script>
+<!-- /COOL-LAYER:JS -->
 </body>
 </html>
