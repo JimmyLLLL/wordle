@@ -40,5 +40,35 @@
 </main>
 <footer><p>© 2026 Wordle · <a href="/">Home</a></p></footer>
 <script src="js/counter.js" defer></script>
+<!-- I18N-FULL -->
+<script>
+(function(){
+var lang=(navigator.language||navigator.userLanguage||'en').toLowerCase();
+if(!lang.startsWith('zh'))return;
+var ZH={"Play":"游玩","About":"关于","Privacy":"隐私","Contact":"联系","🏠 Home":"🏠 首页","About Wordle":"关于 Wordle","Wordle is a free daily word puzzle where you guess a hidden 5-letter word in 6 tries. After each guess, tiles change color to show how close you are. Play the daily puzzle once per day, or practice unlimited in free mode.":"Wordle 是一款免费的每日文字谜题游戏，你需要在6次尝试内猜出一个隐藏的5字母单词。每次猜测后，方块会改变颜色来提示你的接近程度。每天可以挑战一次每日谜题，或在自由模式中无限练习。","Features":"功能特点","Daily puzzle — one word per day, same for everyone":"每日谜题 — 每天一个单词，所有人相同","Free practice mode — unlimited random words":"自由练习模式 — 无限随机单词","Color feedback: green, yellow, gray":"颜色反馈：绿色、黄色、灰色","On-screen keyboard + physical keyboard support":"支持屏幕键盘 + 实体键盘","Win/loss statistics and streak tracking":"胜负统计和连胜记录","Share results as emoji blocks — no spoilers":"以emoji方块分享结果 — 无剧透","Works on desktop and mobile":"支持桌面和移动设备","100% free, no signup, no download":"100%免费，无需注册，无需下载","How Colors Work":"颜色规则","Green":"绿色","— the letter is in the word and in the correct spot.":"— 字母在单词中且位置正确。","Yellow":"黄色","— the letter is in the word but in the wrong spot.":"— 字母在单词中但位置错误。","Gray":"灰色","— the letter is not in the word at all.":"— 字母不在单词中。","Play Wordle →":"玩 Wordle →","👁️ Views":"👁️ 浏览量","👤 Visitors":"👤 访客数","Home":"首页"};
+function walk(node){
+if(node.nodeType===3){
+var t=node.textContent,k=t.trim();
+if(k&&ZH[k]){node.textContent=t.replace(k,ZH[k])}
+}else if(node.nodeType===1&&node.tagName!=='SCRIPT'&&node.tagName!=='STYLE'&&node.tagName!=='NOSCRIPT'){
+if(node.childNodes.length>1){
+var full=node.textContent.trim();
+if(ZH[full]){node.textContent=ZH[full];return}
+}
+for(var i=0;i<node.childNodes.length;i++){walk(node.childNodes[i])}
+}
+}
+walk(document.body);
+document.documentElement.lang='zh-CN';
+var mo=new MutationObserver(function(muts){
+muts.forEach(function(m){
+if(m.type==='childList'){m.addedNodes.forEach(function(n){walk(n)})}
+else if(m.type==='characterData'){walk(m.target)}
+});
+});
+mo.observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>
+<!-- /I18N-FULL -->
 </body>
 </html>

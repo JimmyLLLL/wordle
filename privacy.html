@@ -39,5 +39,35 @@
 </main>
 <footer><p>© 2026 Wordle · <a href="/">Home</a></p></footer>
 <script src="js/counter.js" defer></script>
+<!-- I18N-FULL -->
+<script>
+(function(){
+var lang=(navigator.language||navigator.userLanguage||'en').toLowerCase();
+if(!lang.startsWith('zh'))return;
+var ZH={"Play":"游玩","About":"关于","Privacy":"隐私","Contact":"联系","🏠 Home":"🏠 首页","Privacy Policy":"隐私政策","Last updated: July 25, 2026":"最后更新：2026年7月25日","Wordle processes all game data locally. We do not collect personal information. Your guesses, statistics, and progress are stored only in your browser's local storage.":"Wordle 在本地处理所有游戏数据。我们不收集个人信息。你的猜测、统计和进度仅存储在浏览器的本地存储中。","1. Data":"1. 数据","All game data (guesses, stats, daily progress) exists only in your browser via localStorage. No data is transmitted or stored on any server.":"所有游戏数据（猜测、统计、每日进度）仅通过 localStorage 存在于你的浏览器中。不会向任何服务器传输或存储数据。","2. Third-Party Services":"2. 第三方服务","GitHub Pages — hosting":"GitHub Pages — 托管","Google AdSense — may show ads":"Google AdSense — 可能显示广告","Counter API — anonymous view counting":"Counter API — 匿名浏览计数","3. Advertising":"3. 广告","Google AdSense may use cookies. Manage at":"Google AdSense 可能使用 Cookie。管理地址：","Google Ad Settings":"Google 广告设置","4. Contact":"4. 联系方式","Questions? Visit our":"有疑问？请访问我们的","contact page":"联系页面","👁️ Views":"👁️ 浏览量","👤 Visitors":"👤 访客数","Home":"首页"};
+function walk(node){
+if(node.nodeType===3){
+var t=node.textContent,k=t.trim();
+if(k&&ZH[k]){node.textContent=t.replace(k,ZH[k])}
+}else if(node.nodeType===1&&node.tagName!=='SCRIPT'&&node.tagName!=='STYLE'&&node.tagName!=='NOSCRIPT'){
+if(node.childNodes.length>1){
+var full=node.textContent.trim();
+if(ZH[full]){node.textContent=ZH[full];return}
+}
+for(var i=0;i<node.childNodes.length;i++){walk(node.childNodes[i])}
+}
+}
+walk(document.body);
+document.documentElement.lang='zh-CN';
+var mo=new MutationObserver(function(muts){
+muts.forEach(function(m){
+if(m.type==='childList'){m.addedNodes.forEach(function(n){walk(n)})}
+else if(m.type==='characterData'){walk(m.target)}
+});
+});
+mo.observe(document.body,{childList:true,subtree:true,characterData:true});
+})();
+</script>
+<!-- /I18N-FULL -->
 </body>
 </html>
