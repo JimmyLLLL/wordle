@@ -76,6 +76,15 @@ h1{animation:coolFadeUp .6s ease both}
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jimmywithfiona.com/"},{"@type":"ListItem","position":2,"name":"Games","item":"https://jimmywithfiona.com/games/"},{"@type":"ListItem","position":3,"name":"Wordle","item":"https://jimmywithfiona.com/wordle/"}]}</script>
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"VideoGame","name":"Wordle","url":"https://jimmywithfiona.com/wordle/","applicationCategory":"Game","operatingSystem":"Any (Web Browser)","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"JimmyWithFiona","url":"https://jimmywithfiona.com/"}}</script>
+<!-- GA4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-XXXXXXXXXX');
+</script>
+<!-- /GA4 -->
 </head>
 <body>
 <div class="cool-progress" id="coolProgress"></div>
@@ -528,5 +537,54 @@ if(b)b.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smoo
 })();
 </script>
 <!-- /COOL-LAYER:JS -->
+<!-- BOOKMARK-PROMPT -->
+<script>
+(function(){
+var shown=false;
+function showBookmarkHint(){
+if(shown)return;shown=true;
+var d=document.createElement('div');
+d.id='bm-hint';
+d.style.cssText='position:fixed;bottom:80px;right:20px;background:#161922;border:1px solid #2d3340;border-radius:12px;padding:1rem 1.2rem;max-width:260px;z-index:200;box-shadow:0 8px 32px rgba(0,0,0,.4);font-size:.82rem;color:#e8eaf0;font-family:sans-serif;transition:opacity .3s,transform .3s;opacity:0;transform:translateY(10px)';
+d.innerHTML='<div style="font-weight:700;margin-bottom:.3rem;">⭐ Bookmark this tool</div><div style="color:#7a8190;font-size:.75rem;margin-bottom:.6rem;">Quick access for next time — press Ctrl+D</div><button id="bm-close" style="background:#4f8cff;color:#fff;border:none;border-radius:6px;padding:.3rem .8rem;font-size:.72rem;cursor:pointer">Got it</button>';
+document.body.appendChild(d);
+setTimeout(function(){{d.style.opacity='1';d.style.transform='translateY(0)';}},100);
+document.getElementById('bm-close').onclick=function(){{d.style.opacity='0';d.style.transform='translateY(10px)';setTimeout(function(){{d.remove()}},300)}};
+}
+var interactions=0;
+function checkEngagement(){
+interactions++;
+if(interactions>=3&&!localStorage.getItem('bm_dismissed')){
+showBookmarkHint();
+localStorage.setItem('bm_dismissed','1');
+}
+}
+['click','keydown','touchstart'].forEach(function(e){document.addEventListener(e,checkEngagement,{once:false,passive:true})});
+})();
+</script>
+<!-- /BOOKMARK-PROMPT -->
+<!-- I18N-FULL -->
+<script>
+(function(){
+var lang=(navigator.language||navigator.userLanguage||'en').toLowerCase();
+if(!lang.startsWith('zh'))return;
+var ZH={"About":"关于","Privacy":"隐私","Contact":"联系","Home":"首页","Generate":"生成","Calculate":"计算","Convert":"转换","Download":"下载","Copy":"复制","Clear":"清空","Reset":"重置","Upload":"上传","Start":"开始","Stop":"停止","Search":"搜索","Views":"浏览","Visitors":"访客","More":"更多","Free online tools":"免费在线工具","Result":"结果","Size":"尺寸","Color":"颜色","Width":"宽度","Height":"高度","Format":"格式","Quality":"质量","Options":"选项","Settings":"设置","Loading...":"加载中…","Processing...":"处理中…","Click to upload":"点击上传","or drag & drop":"或拖拽到此处","No results found":"未找到结果","Try again":"重试","How to Play":"玩法说明","How to Use":"使用方法","FAQ":"常见问题","Free":"免费","Private":"隐私","No signup":"无需注册","No download":"无需下载","No upload":"不上传","Works on mobile":"手机可用","100% Free":"完全免费","Related Tools":"相关工具","Wordle":"Wordle","Daily Puzzle":"每日挑战","Free Practice":"自由练习","Guess the 5-letter word in 6 tries":"6 次机会猜 5 字母单词","Free Online Wordle Game":"免费在线 Wordle 游戏","Guess the 5-letter word in 6 tries.":"6 次机会猜出 5 字母单词。","Guess the 5-letter word":"猜 5 字母单词","Wordle is a daily word puzzle game where you have six attempts to guess a hidden five-letter word.":"Wordle 是一个每日单词谜题游戏，你有 6 次机会猜出一个隐藏的 5 字母单词。","green means the letter is in the correct position":"绿色表示字母在正确位置","yellow means the letter is in the word but in the wrong position":"黄色表示字母在词中但位置不对","gray means the letter is not in the word at all":"灰色表示该字母不在词中","Type a 5-letter word":"输入一个 5 字母单词","Use your keyboard or the on-screen keys.":"用键盘或屏幕按键输入。","After each guess, the tiles change color":"每次猜测后，方块会变色","The daily puzzle resets at midnight UTC.":"每日挑战在 UTC 午夜重置。","Come back every day for a new word!":"每天回来猜新词！","completely free":"完全免费","No signup, no download.":"无需注册，无需下载。","Play the daily puzzle once per day":"每天玩一次每日挑战","or practice unlimited in free mode.":"或在自由模式中无限练习。","Wordle — Free Daily 5-Letter Word Guessing Game":"Wordle — 免费每日 5 字母猜词游戏","Wordle is a daily word puzzle":"Wordle 是一个每日单词谜题","you have six attempts to guess a hidden five-letter word":"你有 6 次机会猜出隐藏的 5 字母单词","After each guess, the tiles change color to give you feedback":"每次猜测后方块会变色给你提示","and gray means the letter is not in the word at all":"灰色表示该字母不在词中","The goal is to figure out the secret word":"目标是猜出隐藏的词","using logic and deduction before you run out of tries":"在用完次数前用逻辑和推理","Use your keyboard or the on-screen keys":"用键盘或屏幕按键","Check your previous guesses":"查看之前的猜测","The daily puzzle resets at midnight UTC":"每日挑战在 UTC 午夜重置","Come back every day for a new word":"每天回来猜新词","or practice unlimited in free mode":"或在自由模式中无限练习","No download, no signup":"无需下载，无需注册","Color hints show correct, present, and absent letters":"颜色提示显示正确、存在和不在的字母","Guess the word in 6 tries":"6 次机会猜词","Daily puzzle + unlimited practice":"每日挑战 + 无限练习"};
+function walk(node){
+if(node.nodeType===3){
+var t=node.textContent;
+for(var en in ZH){
+if(t.indexOf(en)>=0){
+node.textContent=t.replace(en,ZH[en]);
+}
+}
+}else if(node.nodeType===1&&node.tagName!=='SCRIPT'&&node.tagName!=='STYLE'&&node.tagName!=='NOSCRIPT'){
+for(var i=0;i<node.childNodes.length;i++){walk(node.childNodes[i])}
+}
+}
+walk(document.body);
+document.documentElement.lang='zh-CN';
+})();
+</script>
+<!-- /I18N-FULL -->
 </body>
 </html>
